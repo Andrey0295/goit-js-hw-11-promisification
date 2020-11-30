@@ -8,20 +8,19 @@ const users = [
     { name: 'Ajax', active: true },
     { name: 'Lux', active: false },
   ];
+
+  
+  const toggleUserState = (allUsers, userName) => {
+    const updatedUsers = allUsers.map(user =>
+      user.name === userName ? { ...user, active: !user.active } : user,
+    );
+  
+    return Promise.resolve(updatedUsers);
+  };
+  
+  const logger = updatedUsers => console.table(updatedUsers);
   
 
-  const toggleUserState = (allUsers, userName) => {
-      return new Promise(resolve => {
-          for (const user of users){
-              if(user.name === userName){
-                  user.active = !user.active;
-              }
-            }
-            resolve(allUsers)
-      })
-      
-  }
-  const logger = data => console.table(data);
 
   /*
    * Должно работать так
